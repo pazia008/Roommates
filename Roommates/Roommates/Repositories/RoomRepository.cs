@@ -11,7 +11,7 @@ namespace Roommates.Repositories
     /// </summary>
     public class RoomRepository : BaseRepository
     {
-        private object lthrow;
+        
 
         /// <summary>
         ///  When new RoomRepository is instantiated, pass the connection string along to the BaseRepository

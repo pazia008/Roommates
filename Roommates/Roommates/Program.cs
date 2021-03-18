@@ -96,6 +96,29 @@ namespace Roommates
                         Console.ReadKey();
                         break;
 
+
+                    case ("Delete a room"):
+                        List<Room> roomChoices = roomRepo.GetAll();
+                        foreach (Room r in roomChoices)
+                        {
+                            Console.WriteLine($"{r.Id} - {r.Name} Max Occupancy({r.MaxOccupancy})");
+                        }
+
+                        Console.Write("Which room would you like to delete? ");
+                        int chosenRoomId = int.Parse(Console.ReadLine());
+                        Room chosenRoom = roomChoices.FirstOrDefault(r => r.Id == chosenRoomId);
+
+                        roomRepo.Delete(chosenRoomId);
+
+                        Console.WriteLine($"Room has been successfully been deleted");
+                        Console.Write("Press any key to continue");
+                        Console.ReadKey();
+                        break;
+
+
+                        
+
+
                 }
 
 
@@ -115,6 +138,7 @@ namespace Roommates
             "Search for room",
             "Add a room",
             "Update a room",
+            "Delete a room",
             "Exit"
         };
 

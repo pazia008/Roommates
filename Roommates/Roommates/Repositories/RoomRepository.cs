@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Roommates.Models;
+using System;
 using System.Collections.Generic;
 
 namespace Roommates.Repositories
@@ -10,6 +11,8 @@ namespace Roommates.Repositories
     /// </summary>
     public class RoomRepository : BaseRepository
     {
+        private object lthrow;
+
         /// <summary>
         ///  When new RoomRepository is instantiated, pass the connection string along to the BaseRepository
         /// </summary>
@@ -115,6 +118,8 @@ namespace Roommates.Repositories
                 }
             }
         }
+
+        
 
         /// <summary>
         ///  Add a new room to the database

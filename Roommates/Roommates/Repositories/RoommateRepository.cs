@@ -85,7 +85,7 @@ namespace Roommates.Repositories
 
                     reader.Close();
 
-                    return mate;
+                    return mate;  
                 }
             }
         }

@@ -45,8 +45,7 @@ namespace Roommates
                         Console.Write("Press any key to continue");
                         Console.ReadKey();
                         break;
-                        // Do stuff
-                        break;
+                        
 
          case ("Add a room"):
                         Console.Write("Room name: ");
@@ -67,8 +66,7 @@ namespace Roommates
                         Console.Write("Press any key to continue");
                         Console.ReadKey();
                         break;
-                        // Do stuff
-                        break;
+                       
          case ("Exit"):
              runProgram = false;
              break;
@@ -158,8 +156,28 @@ namespace Roommates
                         Console.Write("Press any key to continue");
                         Console.ReadKey();
                         break;
-                        // Do stuff
+
+                    case ("Update a chore"):
+                        List<Chore> choreOptions = choreRepo.GetAll();
+                        foreach (Chore c in choreOptions)
+                        {
+                            Console.WriteLine($"{c.Id} - {c.Name} ");
+                        }
+
+                        Console.Write("Which chore would you like to update? ");
+                        int selectedChoreId = int.Parse(Console.ReadLine());
+                        Chore selectedChore = choreOptions.FirstOrDefault(c => c.Id == selectedChoreId);
+
+                        Console.Write("New Name: ");
+                        selectedChore.Name = Console.ReadLine();
+
+                        choreRepo.Update(selectedChore);
+
+                        Console.WriteLine($"Room has been successfully updated");
+                        Console.Write("Press any key to continue");
+                        Console.ReadKey();
                         break;
+
 
 
 
@@ -201,6 +219,7 @@ namespace Roommates
             "Show all chores",
             "Search for a chore",
             "Add a chore",
+            "Update a chore",
             "Show all roommates",
             "Exit"
         };

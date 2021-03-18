@@ -24,7 +24,7 @@ namespace Roommates.Repositories
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
-                    // A list to hold the rooms we retrieve from the database.
+                    
                     List<Chore> chores = new List<Chore>();
 
                     // Read() will return true if there's more data to read
@@ -41,7 +41,7 @@ namespace Roommates.Repositories
 
                         
 
-                        // Now let's create a new room object using the data from the database.
+                        
                         Chore chore = new Chore
                         {
                             Id = idValue,
@@ -112,7 +112,25 @@ namespace Roommates.Repositories
                 }
             }
 
-            // when this method is finished we can look in the database and see the new room.
+        }
+
+
+        public void Update(Chore chore)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Chore
+                                    SET Name = @name
+                                    WHERE Id = @id";
+                    cmd.Parameters.AddWithValue("@name", chore.Name);
+                    cmd.Parameters.AddWithValue("@id", chore.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
     }
